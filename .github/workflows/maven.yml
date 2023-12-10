@@ -24,16 +24,16 @@ jobs:
 
     # Debugging step: List files in the target directory
     - name: Debug - List Files
-      run: ls -R /home/runner/work/GitHubActions-WebAppDeployment/GitHubActions-WebAppDeployment/target/
+      run: ls -R /home/runner/work/GActions-WebAppDeployment/GActions-WebAppDeployment/target/
 
     # Debugging step: Print the content of the WAR file
     - name: Debug - Print WAR Content
-      run: cat /home/runner/work/GitHubActions-WebAppDeployment/GitHubActions-WebAppDeployment/target/spring3-mvc-maven-xml-hello-world-3.0-SNAPSHOT.war
+      run: cat /home/runner/work/GActions-WebAppDeployment/GActions-WebAppDeployment/target/spring3-mvc-maven-xml-hello-world-3.0-SNAPSHOT.war
 
     # Deploy to Tomcat with additional curl options
     - name: Deploy to Tomcat
       run: |
         curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} \
           -H "Content-Type: application/octet-stream" \
-          --upload-file /home/runner/work/GitHubActions-WebAppDeployment/GitHubActions-WebAppDeployment/target/spring3-mvc-maven-xml-hello-world-3.0-SNAPSHOT.war \
+          --upload-file /home/runner/work/GActions-WebAppDeployment/GActions-WebAppDeployment/target/spring3-mvc-maven-xml-hello-world-3.0-SNAPSHOT.war \
           'http://${{ secrets.TOMCAT_HOST }}:8080/manager/text/deploy?path=/myweb_dev_action&update=true'
